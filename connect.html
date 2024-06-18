@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gym leggings for women: Buy sports leggings, gym pants, yoga pants and gym leggings high waisted online in India">
+    <title>Six Point Three | Women's Activewear, Gymwear and Athleisure</title>
+    <link rel="icon" type="image/x-icon" href="Images\favicon-2.png">
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <header class="menu-bar">
+        <div class="logo">
+            <a href="index.html"><img src="Images/logoBlack.png" alt="Six Point Three"></a>
+        </div>
+        <nav class="menu">
+            <a href="about.html" id="about">ABOUT</a>
+            <a href="connect.html">CONNECT</a>
+        </nav>
+    </header>
+    <div id="flexContainer">
+        <ul class="social-links">
+            <li><a href="mailto:help@sixpointthreeathleisure.com" target="_blank" class="link">Email</a></li>
+            <li><a href="https://www.pinterest.com/sixpointthreeathleisure" target="_blank" class="link">Pinterest</a></li>
+            <li><a href="https://www.instagram.com/sixpointthreeathleisure" target="_blank" class="link">Instagram</a></li>
+        </ul>
+    </div>
+    <div id="canvasContainer"></div>
+    <script>
+        let dots = [];
+        let guideDots = [];
+        let currentIndex = 0;
+       let drawingCompleted = false;
+      
+
+
+        let lastPos = { x: 1016, y: 273 };
+        let currentPos = { x: 1016, y: 273 };
+        let dotSize = 5; // Reduced the dot size
+
+        const guidePoints = [
+            { x: 178, y: 325 },
+            { x: 216, y: 273 },
+            { x: 233, y: 205 },
+            { x: 265, y: 205 },
+            { x: 261, y: 263 },
+            { x: 323, y: 281 },
+            { x: 408, y: 274 },
+            { x: 403, y: 201 },
+            { x: 438, y: 212 },
+            { x: 477, y: 361 },
+            { x: 464, y: 466 },
+            { x: 443, y: 527 },
+            { x: 324, y: 501 },
+            { x: 206, y: 517 },
+            { x: 178, y: 325 },
+        ];
+
+        class Dot {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            connect(px, py) {
+                stroke("#5A5A5A"); // Dark gray
+                line(this.x, this.y, px, py);
+            }
+            plot(fillColor, strokeColor) {
+                fill("#000000"); // Black
+                stroke("#000000"); // Black
+                ellipse(this.x, this.y, dotSize);
+            }
+            plotText(txt) {
+                fill("#5A5A5A"); // Dark gray
+                stroke("#DEDEDE"); // Light gray
+                textSize(12);
+                text(txt, this.x + 5, this.y + 5);
+            }
+            within(px, py) {
+                let isWithin = false;
+                let d = dist(px, py, this.x, this.y);
+                isWithin = d < dotSize ? true : false;
+                return isWithin;
+            }
+        }
+
+        // function preload() {
+        //     img = loadImage('Website/Images/SportsBraSticker.png'); 
+        // }
+
+        function setup() {
+            let canvas = createCanvas(700, 650);
+            canvas.parent('canvasContainer');
+            for (let i = 1; i < guidePoints.length; i++) {
+                guideDots.push(new Dot(guidePoints[i].x, guidePoints[i].y));
+            }
+        }
+
+        function draw() {
+            background("#d2ecf4"); 
+
+            for (let i = 0; i < guideDots.length; i++) {
+                guideDots[i].plot();
+                guideDots[i].plotText(i + 1);
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].plot();
+                if (i > 0) {
+                    // Connect dots at exact points
+                    dots[i].connect(dots[i - 1].x, dots[i - 1].y);
+                }
+            }
+
+            if (currentIndex == 0) {
+                fill("#DE375C"); // Pink
+                stroke("#DEDEDE"); // Light gray
+            } else if (!drawingCompleted) {
+                stroke("#DE375C"); // Pink
+                strokeWeight(3);
+                line(lastPos.x, lastPos.y, currentPos.x, currentPos.y);
+            } else {
+               fillVertex();
+            }
+        }
+
+        function fillVertex() {
+            stroke("#5A5A5A"); // Dark gray
+            // fill("#DE375C"); // Pink
+            beginShape();
+            for (let i = 0; i < dots.length; i++) {
+                vertex(dots[i].x, dots[i].y);
+            }
+            endShape(CLOSE);
+            image(img, 978, 325, width, height);
+            // if (document.getElementById('completionImage')) return;
+
+            // let img = createImg('images/SportsBraSticker.png', 'Completion Image');
+            // img.id('completionImage');
+            // img.position(width - 1016, height - 273); 
+            // img.size(200, 200);
+        }
+
+        function mousePressed() {
+            currentPos.x = mouseX;  
+            currentPos.y = mouseY;
+            if (!drawingCompleted  &&
+      guideDots[currentIndex].within(mouseX, mouseY)   ) {
+                dots.push(new Dot(mouseX, mouseY));
+                currentIndex++;
+                lastPos.x = mouseX;  
+                lastPos.y = mouseY;
+                if (currentIndex == guideDots.length) {
+                    drawingCompleted = true;
+                    img = loadImage(() => {
+                    console.log('Image loaded successfully.');
+                     }, () => {
+                         console.log(img);
+                         console.log('Failed to load image.');
+                     });
+                     img.src = "https://github.com/Palak66/imgtemp/blob/f83a0953c8a2997ed725aee11990c18616289764/SportsBraSticker.png"
+                }
+            }
+        }
+        function mouseMoved() {
+            currentPos.x = mouseX;
+            currentPos.y = mouseY;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    padding: 10px 20px;
+    z-index: 10;
+}
+
+
+.logo img {
+    height: 25px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 70px 10px 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    padding: 10px 70px 10px 20px;
+}
+
+#about {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    padding: 10px 20px 10px 20px;
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.draggable {
+    position: absolute;
+    z-index: 1;
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+.draggable img {
+    width: 133px;
+    height: auto;
+}
+
+.drop-zone {
+    position: absolute;
+    width: 100px;
+    height: 75px;
+    /* background-color: rgba(255, 255, 255, 0.5);  */
+    z-index: 1;
+    pointer-events: none; /* Make it invisible to pointer events */
+}
+
+#drop1 {
+    top: 43.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#drop2 {
+    top: 59%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#drop3 {
+    top: 91%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+    .draggable img {
+        width: 135px; 
+    }
+
+    .drop-zone {
+        width: 100px; 
+        height: 75px;
+        z-index: 1; 
+    }
+
+    #drop1 {
+        top: 44.6%; 
+        left: 50.2%;
+        transform: translate(-50%, -50%);
+    }
+
+    #drop2 {
+        top: 57.5%; 
+        left: 50.2%;
+        transform: translate(-50%, -50%);
+    }
+
+    #drop3 {
+        top: 83.5%; 
+        left: 49.8%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    padding: 10px 20px;
+    z-index: 10;
+}
+
+
+.logo img {
+    height: 20px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 30px 10px 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
+    padding: 10px 50px 10px 10px;
+}
+
+#about {
+    padding: 10px 10px 10px 10px;
+}

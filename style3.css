@@ -1,0 +1,131 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.menu-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    padding: 10px 20px;
+    z-index: 10;
+}
+.logo img {
+    height: 25px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 70px 10px 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    padding: 10px 70px 10px 20px;
+}
+
+#about {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    padding: 10px 20px 10px 20px;
+}
+.image{
+    height:100% ;
+    display:flex;
+    justify-content: flex-start;
+    margin: 0px;
+    padding: 0px;
+    float:left;
+    position: relative;
+}
+.about-us {
+    width: 40vw;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    position: relative;
+    text-align: center;
+    color: black;
+    font-size: 12px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    padding: 250px 70px;
+    text-wrap: wrap;
+    line-height: 2.5;
+}
+
+@media only screen and (max-device-width: 600px) {
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }    
+.menu-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    padding: 10px 20px;
+    z-index: 10;
+}
+
+
+.logo img {
+    height: 20px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 30px 10px 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
+    padding: 10px 50px 10px 10px;
+}
+
+#about {
+    padding: 10px 10px 10px 10px;
+}
+.image {
+    width: 100vw;
+    height: auto;
+}
+
+.about-us {
+    width: 80%;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    text-wrap: wrap;
+    padding: 20px;
+}
+}
